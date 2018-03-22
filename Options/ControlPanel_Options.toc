@@ -1,0 +1,16 @@
+﻿## Interface: 70300
+## Author: cqwrteur
+## Title: ControlPanel Options
+## Version: @project-version@
+## Dependencies: ControlPanel
+## LoadOnDemand: 1
+
+#@no-lib-strip@
+Libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+#@end-no-lib-strip@
+
+locale\locale.xml
+Init.lua
+module\module.xml
+Core.lua

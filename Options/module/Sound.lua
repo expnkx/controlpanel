@@ -9,9 +9,10 @@ local ControlPanel_Options = AceAddon:GetAddon("ControlPanel_Options")
 local L = AceLocale:GetLocale("ControlPanel_Options")
 local string_format = string.format
 local GetClassInfoByID = GetClassInfoByID
-local sound_channels = {["24"]=string_format(SOUND_CHANNELS_LOW,24),
-					["48"]=string_format(SOUND_CHANNELS_MEDIUM,48),
-					["64"]=string_format(SOUND_CHANNELS_HIGH,64)}
+local sound_channels = {[24]=string_format(SOUND_CHANNELS_LOW,24),
+					[48]=string_format(SOUND_CHANNELS_MEDIUM,48),
+					[64]=string_format(SOUND_CHANNELS_HIGH,64),
+					[128]=string_format(SOUND_CHANNELS_HIGH,128)}
 local Sound_GameSystem_GetNumOutputDrivers = Sound_GameSystem_GetNumOutputDrivers
 local pow = math.pow
 local log = math.log

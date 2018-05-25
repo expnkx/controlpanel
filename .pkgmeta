@@ -25,11 +25,8 @@ externals:
 	Options/Libs/AceLocale-3.0:
 		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceLocale-3.0
 		tag: latest
-	Libs/AceGUI-3.0:
+	Options/Libs/AceGUI-3.0:
 		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceGUI-3.0
-		tag: latest
-	Libs/AceHook-3.0:
-		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceHook-3.0
 		tag: latest
 
 move-folders:

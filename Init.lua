@@ -1,7 +1,7 @@
 local LibStub = LibStub
 local AceAddon = LibStub("AceAddon-3.0")
 
-local ControlPanel = AceAddon:NewAddon("ControlPanel","AceEvent-3.0","AceConsole-3.0","AceHook-3.0")
+local ControlPanel = AceAddon:NewAddon("ControlPanel","AceEvent-3.0","AceConsole-3.0")
 
 --------------------------------------------------------------------------------------
 local AceDB = LibStub("AceDB-3.0")
@@ -24,13 +24,6 @@ local default_options=
 		arena = empty_table,
 		rest = empty_table,
 		scenario = empty_table,
-		
-		enable_party = false,
-		enable_raid = false,
-		enable_pvp = false,
-		enable_arena = false,
-		enable_rest = false,
-		enable_scenario = false,
 	}
 }
 

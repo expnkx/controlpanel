@@ -1,7 +1,6 @@
 ﻿## Interface: 70300
 ## Author: cqwrteur
 ## Title: ControlPanel Options
-## Version: @project-version@
 ## Dependencies: ControlPanel
 ## LoadOnDemand: 1
 

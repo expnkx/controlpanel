@@ -100,7 +100,7 @@ local function generate_enable()
 		type = "toggle",
 		set = function(info,val)
 			local f = info[1]
-			ControlPanel.db.profile["enable_"..f] = val
+			ControlPanel.db.profile["enable_"..f] = val or nil
 			if f == ControlPanel:GetInstanceType() then
 				if val == true then
 					ControlPanel:UpdateWorld(f)

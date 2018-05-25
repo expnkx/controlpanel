@@ -21,3 +21,11 @@ function ControlPanel_Options:OnInitialize()
 	ControlPanel.db.RegisterCallback(ControlPanel, "OnProfileCopied", "OnEnable")
 	ControlPanel.db.RegisterCallback(ControlPanel, "OnProfileReset", "OnEnable")
 end
+
+function ControlPanel_Options:CONTROL_PANEL_CHAT_COMMAND(message,input)
+	if not input or input:trim() == "" then
+		LibStub("AceConfigDialog-3.0"):Open("ControlPanel")
+	else
+		LibStub("AceConfigCmd-3.0"):HandleCommand("ControlPanel", "ControlPanel",input)
+	end
+end

@@ -1,17 +1,4 @@
-local LibStub = LibStub
-local AceAddon = LibStub("AceAddon-3.0")
-local ControlPanel = AceAddon:GetAddon("ControlPanel")
-local SetCVar = SetCVar
-local GetCVar = GetCVar
-local GetCVarBool = GetCVarBool
-local type = type
-local next = next
-local tonumber = tonumber
-local tostring = tostring
-local pairs = pairs
-local select = select
-local GetInstanceInfo = GetInstanceInfo
-local IsResting = IsResting
+local ControlPanel = LibStub("AceAddon-3.0"):GetAddon("ControlPanel")
 --------------------------------------------------------------------------------------
 
 local function equal(cvar,val)
@@ -23,14 +10,11 @@ local function equal(cvar,val)
 	else
 		return GetCVar(cvar)==val
 	end
-	return false
 end
 
 function ControlPanel:UpdateWorld(t)
-	local k
-	local v
 	for k,v in pairs(self.db.profile[t]) do
-		if equal(k,v)==false then
+		if not equal(k,v) then
 			SetCVar(k,v)
 		end
 	end
@@ -52,7 +36,7 @@ function ControlPanel:GetProfileType()
 	local profile = self.db.profile
 	local instance = self:GetInstanceType()
 	if profile[instance] then
-		if instance ~= "none" and profile["enable_"..instance] == true then
+		if instance ~= "none" and profile["enable_"..instance] then
 			return instance;
 		end
 	end

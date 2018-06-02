@@ -20,6 +20,7 @@ function ControlPanel_Options:OnInitialize()
 	ControlPanel.db.RegisterCallback(ControlPanel, "OnProfileChanged", "OnEnable")
 	ControlPanel.db.RegisterCallback(ControlPanel, "OnProfileCopied", "OnEnable")
 	ControlPanel.db.RegisterCallback(ControlPanel, "OnProfileReset", "OnEnable")
+	ControlPanel.RegisterMessage(ControlPanel_Options,"CONTROL_PANEL_CHAT_COMMAND")
 end
 
 function ControlPanel_Options:CONTROL_PANEL_CHAT_COMMAND(message,input)

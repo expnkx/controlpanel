@@ -58,19 +58,6 @@ local Global =
 	type = "group",
 	args =
 	{
-		system =
-		{
-			order = get_order(),
-			name = SYSTEMOPTIONS_MENU,
-			type = "execute",
-			func = function()
-				AceConfigDialog:Close("ControlPanel")
-				ControlPanel:Unhook(VideoOptionsFrame,"Show")
-				VideoOptionsFrame:Show()
-				ControlPanel:SecureHook(VideoOptionsFrame,"Show")
-			end,
-			width = "full"
-		},
 		Display =
 		{
 			order = get_order(),

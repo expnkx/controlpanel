@@ -8,10 +8,6 @@ local ControlPanel = AceAddon:GetAddon("ControlPanel")
 local ControlPanel_Options = AceAddon:GetAddon("ControlPanel_Options")
 local L = AceLocale:GetLocale("ControlPanel_Options")
 local string_format = string.format
-local SetCVar = SetCVar
-local GetCVar = GetCVar
-local GetCVarBool = GetCVarBool
-local GetRefreshs = GetRefreshs
 local pairs = pairs
 local get_cvar_number = ControlPanel_Options.get_cvar_number
 
@@ -31,7 +27,7 @@ local languages = {deDE="deDE",enUS="enUS",esES="esES",esMX="esMX",frFR="frFR",i
 local graphicsAPIs = { GetGraphicsAPIs() }
 local resolutions = { GetScreenResolutions() }
 
-local function get_refresh_rates()
+--[[local function get_refresh_rates()
 	local refs = { GetRefreshRates() }
 	local ret = {}
 	local i
@@ -42,13 +38,37 @@ local function get_refresh_rates()
 	return ret
 end
 
-local refresh_rates = get_refresh_rates()
+local refresh_rates = get_refresh_rates()]]
+
+local sets = {}
 
 local order = 0
 local function get_order()
 	local temp = order
 	order = order +1
 	return temp
+end
+
+local function execute_shared_media_func(self)
+	local tp = self[3]
+	local name = sets.name
+	if name then
+		local path = sets.path
+		local cp = ControlPanel.db.profile.shared_media
+		if cp == nil then
+			cp = {[tp]= {}}
+		end
+		local sett = cp[tp]
+		LibStub("LibSharedMedia-3.0"):Register(tp,name,path)
+		sett[name] = path
+		if next(sett) == nil then
+			cp[tp] = nil
+			if next(cp) == nil then
+				cp = nil
+			end
+		end
+		ControlPanel.db.profile.shared_media = cp
+	end
 end
 
 local Global =
@@ -81,7 +101,7 @@ local Global =
 					end,
 					confirm = true,
 				},
-				gxRefresh =
+--[[				gxRefresh =
 				{
 					order = get_order(),
 					name = REFRESH_RATE,
@@ -95,7 +115,7 @@ local Global =
 						return GetCVar("gxRefresh")
 					end,
 					confirm = true,
-				},
+				},]]
 				gxWindow =
 				{
 					order = get_order(),
@@ -282,6 +302,77 @@ local Global =
 				},
 			},
 		},
+		lsm = LibStub("LibSharedMedia-3.0",true) and
+		{
+			order = get_order(),
+			name = "LibSharedMedia-3.0",
+			type = "group",
+			args =
+			{
+				name =
+				{
+					type = "input",
+					name = NAME,
+					order = 1,
+					set = function(self,key)
+						if key == "" then
+							sets.name = nil
+						else
+							sets.name = key
+						end
+					end,
+					get = function(self)
+						return sets.name
+					end,
+				},
+				path =
+				{
+					type = 'input',
+					name = 'Path',
+					order = 2,
+					set = function(self,key)
+						if key == "" then
+							sets.path = nil
+						else
+							sets.path = key
+						end
+					end,
+					get = function(self)
+						return sets.path
+					end,
+				},
+				font =
+				{
+					type = "execute",
+					name = "font",
+					func = execute_shared_media_func
+				},
+				border =
+				{
+					type = "execute",
+					name = "border",
+					func = execute_shared_media_func
+				},
+				background =
+				{
+					type = "execute",
+					name = "background",
+					func = execute_shared_media_func
+				},
+				sound =
+				{
+					type = "execute",
+					name = "sound",
+					func = execute_shared_media_func
+				},
+				statusbar=
+				{
+					type = "execute",
+					name = "statusbar",
+					func = execute_shared_media_func
+				}
+			}
+		} or nil
 	}
 }
 

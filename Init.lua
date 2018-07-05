@@ -2,23 +2,26 @@ local ControlPanel = LibStub("AceAddon-3.0"):NewAddon("ControlPanel","AceEvent-3
 
 function ControlPanel:OnInitialize()
 	SetCVar("RAIDSettingsEnabled",false)
-	local empty_table = {}
 	self.db = LibStub("AceDB-3.0"):New("ControlPanelDB",{
 		profile = 
 		{
-			none = empty_table,
-			party = empty_table,
-			raid = empty_table,
-			pvp = empty_table,
-			arena = empty_table,
-			rest = empty_table,
-			scenario = empty_table,
 		}
 	},true)
 	self:RegisterChatCommand("ControlPanel", "ChatCommand")
 	self:RegisterChatCommand("CP", "ChatCommand")
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("PLAYER_UPDATE_RESTING","PLAYER_ENTERING_WORLD")
+	local sm = self.db.profile.shared_media
+	if sm then
+		local tb = LibStub("LibSharedMedia-3.0",true)
+		if tb then
+			for k,v in pairs(sm) do
+				for kk,vv in pairs(v) do
+					tb:Register(k,kk,vv)
+				end
+			end
+		end
+	end
 end
 
 function ControlPanel:ChatCommand(input)

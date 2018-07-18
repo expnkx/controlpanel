@@ -8,7 +8,6 @@ local ControlPanel = AceAddon:GetAddon("ControlPanel")
 local ControlPanel_Options = AceAddon:GetAddon("ControlPanel_Options")
 local L = AceLocale:GetLocale("ControlPanel_Options")
 local string_format = string.format
-local GetClassInfoByID = GetClassInfoByID
 local sound_channels = {[24]=string_format(SOUND_CHANNELS_LOW,24),
 					[48]=string_format(SOUND_CHANNELS_MEDIUM,48),
 					[64]=string_format(SOUND_CHANNELS_HIGH,64),
@@ -366,7 +365,7 @@ function ControlPanel_Options:CreateSound(o)
 						Sound_EnableDSPEffects = 
 						{
 							order = get_order(),
-							name = GetClassInfoByID(6),
+							name = GetClassInfo(6),
 							type = "toggle",
 							set = function(info,val)
 								ControlPanel:SetCVarInstance(info[1],"Sound_EnableDSPEffects",val)

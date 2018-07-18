@@ -13,9 +13,12 @@ local function equal(cvar,val)
 end
 
 function ControlPanel:UpdateWorld(t)
-	for k,v in pairs(self.db.profile[t]) do
-		if not equal(k,v) then
-			SetCVar(k,v)
+	local tb = self.db.profile[t]
+	if tb then
+		for k,v in pairs(tb) do
+			if not equal(k,v) then
+				SetCVar(k,v)
+			end
 		end
 	end
 end
@@ -91,7 +94,13 @@ function ControlPanel:GetCVarInstance(t,key)
 end
 
 function ControlPanel:FireCVarInstance(t,key)
-	self.db.profile[t][key] = nil
+	local v = self.db.profile[t]
+	if v then
+		v[key] = nil
+		if next(v) == nil then
+			self.db.profile[t] = nil
+		end
+	end
 end
 
 function ControlPanel:PLAYER_ENTERING_WORLD()

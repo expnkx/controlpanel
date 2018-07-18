@@ -11,17 +11,6 @@ function ControlPanel:OnInitialize()
 	self:RegisterChatCommand("CP", "ChatCommand")
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("PLAYER_UPDATE_RESTING","PLAYER_ENTERING_WORLD")
-	local sm = self.db.profile.shared_media
-	if sm then
-		local tb = LibStub("LibSharedMedia-3.0",true)
-		if tb then
-			for k,v in pairs(sm) do
-				for kk,vv in pairs(v) do
-					tb:Register(k,kk,vv)
-				end
-			end
-		end
-	end
 end
 
 function ControlPanel:ChatCommand(input)

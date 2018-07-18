@@ -22,6 +22,17 @@ end
 
 function ControlPanel:OnEnable()
 	self:UpdateWorld("none")
+	local sm = self.db.profile.shared_media
+	if sm then
+		local tb = LibStub("LibSharedMedia-3.0",true)
+		if tb then
+			for k,v in pairs(sm) do
+				for kk,vv in pairs(v) do
+					tb:Register(k,kk,vv)
+				end
+			end
+		end
+	end
 end
 
 function ControlPanel:GetInstanceType()

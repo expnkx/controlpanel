@@ -322,6 +322,21 @@ function ControlPanel_Options:CreateGraphics(o)
 					type = "group",
 					args = 
 					{
+						Gamma =
+						{
+							order = get_order(),
+							name = GAMMA,
+							desc = OPTION_TOOLTIP_GAMMA,
+							type = "range",
+							min = 0,
+							max = 3,
+							set = function(info,val)
+								ControlPanel:SetCVarInstance(info[1],"GAMMA",val)
+							end,
+							get = function(info)
+								return ControlPanel:GetCVarNumberInstance(info[1],"GAMMA")
+							end,
+						},
 						graphicsShadowQuality = 
 						{
 							order = get_order(),

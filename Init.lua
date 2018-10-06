@@ -2,11 +2,7 @@ local ControlPanel = LibStub("AceAddon-3.0"):NewAddon("ControlPanel","AceEvent-3
 
 function ControlPanel:OnInitialize()
 	SetCVar("RAIDSettingsEnabled",false)
-	self.db = LibStub("AceDB-3.0"):New("ControlPanelDB",{
-		profile = 
-		{
-		}
-	},true)
+	self.db = LibStub("AceDB-3.0"):New("ControlPanelDB",{profile = {}},true)
 	self:RegisterChatCommand("ControlPanel", "ChatCommand")
 	self:RegisterChatCommand("CP", "ChatCommand")
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")

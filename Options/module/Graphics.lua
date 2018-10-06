@@ -392,7 +392,7 @@ function ControlPanel_Options:CreateGraphics(o)
 							desc = OPTION_TOOLTIP_PARTICLE_DENSITY,
 							type = "range",
 							min = 1,
-							max = 4,
+							max = 5,
 							step = 1,
 							set = function(info,val)
 								ControlPanel:SetCVarInstance(info[1],"graphicsParticleDensity",val)

@@ -56,6 +56,19 @@ local Interface =
 				return get_cvar_bool("enableMovePad")
 			end,		
 		},
+		showTutorials =
+		{
+			order = get_order(),
+			name = SHOW_TUTORIALS,
+			desc = OPTION_TOOLTIP_SHOW_TUTORIALS,
+			type = "toggle",
+			set = function(info,val)
+				SetCVar("showTutorials",val)
+			end,
+			get = function(info)
+				return get_cvar_bool("showTutorials")
+			end
+		},
 		Controls = 
 		{
 			name = CONTROLS_LABEL,

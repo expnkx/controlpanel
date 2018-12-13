@@ -19,7 +19,7 @@ local MSAA_qualities = { ["0"] = VIDEO_OPTIONS_NONE,
 				["1,0"]=string_format(ADVANCED_ANTIALIASING_MSAA_FORMAT,2,2),
 				["2,0"]=string_format(ADVANCED_ANTIALIASING_MSAA_FORMAT,4,4),
 				["2,1"]=string_format(ADVANCED_ANTIALIASING_MSAA_FORMAT,4,8),["2,2"]=string_format(ADVANCED_ANTIALIASING_MSAA_FORMAT,4,16),
-				["3,0"]=string_format(ADVANCED_ANTIALIASING_MSAA_FORMAT,8,8),["3,1"]=string_format(ADVANCED_ANTIALIASING_MSAA_FORMAT,8,16),["3,2"]=string_format(ADVANCED_ANTIALIASING_MSAA_FORMAT,8,32)}
+				["3,0"]=string_format(ADVANCED_ANTIALIASING_MSAA_FORMAT,8,8)}
 local order = 0
 local function get_order()
 	local temp = order

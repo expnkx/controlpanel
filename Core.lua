@@ -61,11 +61,17 @@ function ControlPanel:SetCVarInstance(t,key,value)
 	local sdpt = self.db.profile[t]
 	if sdpt == nil then
 		SetCVar(key,value)
+		sdpt = {[key]=value}
+		self.db.profile[t] = sdpt
 	else
-		sdpt[key] = value
 		if self:GetProfileType() == t then
 			SetCVar(key,value)
 		end
+		sdpt[key] = value
+
+	end
+	if next(sdpt) == nil then
+		self.db.profile[t] = nil
 	end
 end
 

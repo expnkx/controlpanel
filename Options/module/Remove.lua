@@ -20,12 +20,15 @@ local function get_order()
 end
 
 local function cvars_values(info)
-	wipe(tb)
-	local k,v
-	for k,v in pairs(ControlPanel.db.profile[info[1]]) do
-		tb[k] = k.." : "..tostring(v)
+	local tt = ControlPanel.db.profile[info[1]]
+	if tt then
+		wipe(tb)
+		local k,v
+		for k,v in pairs(ControlPanel.db.profile[info[1]]) do
+			tb[k] = k.." : "..tostring(v)
+		end
+		return tb
 	end
-	return tb
 end
 
 local Custom

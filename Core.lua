@@ -59,7 +59,7 @@ end
 
 function ControlPanel:SetCVarInstance(t,key,value)
 	local sdpt = self.db.profile[t]
-	if sdpt == nil then
+	if t=="temp" or sdpt == nil then
 		SetCVar(key,value)
 		sdpt = {[key]=value}
 		self.db.profile[t] = sdpt
@@ -68,7 +68,6 @@ function ControlPanel:SetCVarInstance(t,key,value)
 			SetCVar(key,value)
 		end
 		sdpt[key] = value
-
 	end
 	if next(sdpt) == nil then
 		self.db.profile[t] = nil
@@ -77,7 +76,7 @@ end
 
 function ControlPanel:GetCVarNumberInstance(t,key)
 	local v = self.db.profile[t]
-	if v ==nil or v[key] == nil then
+	if t=="temp" or v ==nil or v[key] == nil then
 		return tonumber(GetCVar(key))
 	end
 	return v[key]
@@ -85,7 +84,7 @@ end
 
 function ControlPanel:GetCVarBoolInstance(t,key)
 	local v = self.db.profile[t]
-	if v ==nil or v[key] == nil then
+	if t=="temp" or v ==nil or v[key] == nil then
 		return GetCVarBool(key)
 	end
 	return v[key]
@@ -93,7 +92,7 @@ end
 
 function ControlPanel:GetCVarInstance(t,key)
 	local v = self.db.profile[t]
-	if v ==nil or v[key] == nil then
+	if t=="temp" or v ==nil or v[key] == nil then
 		return GetCVar(key)
 	end
 	return v[key]

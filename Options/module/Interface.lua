@@ -785,7 +785,19 @@ local Interface =
 						return GetCVarBool(info[3])
 					end,
 				},]]
-				
+				ShowClassColorInNameplate =
+				{
+					name = "Show Class Color In Namplate",
+					type = "toggle",
+					set = function(info,val)
+						SetCVar(info[3],val)
+						ReloadUI()
+					end,
+					get = function(info)
+						return GetCVarBool(info[3])
+					end,
+					confirm = true
+				},
 				ShowClassColorInFriendlyNameplate =
 				{
 					name = "Show Class Color In Friendly Namplate",

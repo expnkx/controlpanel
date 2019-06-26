@@ -773,6 +773,19 @@ local Interface =
 						return GetCVarBool(info[3])
 					end,
 				},
+				nameplateMaxDistance =
+				{
+					name = "nameplateMaxDistance",
+					type = "range",
+					min = 0,
+					max = 100,
+					set = function(info,val)
+						SetCVar("nameplateMaxDistance",val)
+					end,
+					get = function(info)
+						return GetCVar("nameplateMaxDistance")
+					end,
+				},
 --[[				MakeLarger =
 				{
 					name = UNIT_NAMEPLATES_MAKE_LARGER,

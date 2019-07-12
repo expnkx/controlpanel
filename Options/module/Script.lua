@@ -110,6 +110,22 @@ function ControlPanel_Options:CreateScript(o)
 						return ControlPanel:GetCVarNumberInstance(info[1],"spellqueuewindow")
 					end,
 				},
+				taintLog =
+				{
+					order = get_order(),
+					name = "taintLog",
+					type = "range",
+					min = 0,
+					max = 2,
+					step = 1,
+					set = function(info,val)
+						ControlPanel:SetCVarInstance(info[1],"taintLog",val)
+					end,
+					get = function(info)
+						return ControlPanel:GetCVarNumberInstance(info[1],"taintLog")
+					end,
+					width = "full",
+				},
 			}
 		}
 	end
